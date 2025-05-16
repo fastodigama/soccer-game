@@ -1,0 +1,516 @@
+/* 
+=========================================
+           TABLE OF CONTENTS
+=========================================
+1. Import Google Fonts
+2. General Styling (Body, Text, Colors)
+3. Goal Net Styling
+4. Goalkeeper Styling (Body, Head, Arms, Legs)
+5. Soccer Ball Styling
+6. Button Styling
+7. Animation Keyframes (Shooting, Jumping)
+=========================================
+*/
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&family=Racing+Sans+One&display=swap');
+
+body {
+  background-color: #0D4715;
+ font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #FFF;
+  
+
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+
+
+}
+
+.goal-font{
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.saved-font{
+  font-family: "Bungee", sans-serif; 
+  font-weight: 900;
+  color: #ff0000;
+}
+
+#goal-net {
+
+  border: 3vh solid #FFF;
+  border-bottom: none;
+  border-radius: 1.5vh 1.5vh 0 0;
+  width: 40vw;
+  height: 35vh;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  transform: rotateX(15deg); 
+  background: repeating-linear-gradient(
+    45deg, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.2) 10px, 
+    transparent 10px, 
+    transparent 20px
+  );
+  
+}
+
+
+
+
+#goalkeeper {
+  position:absolute;
+  width: 2.6vw;
+  height: 9.3vh;
+  background-color: blue;
+  left: 19vw;
+  top: 20vh;
+
+}
+/* goalkeeper head */
+#goalkeeper::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+
+  background-image: url(angry-face-minecraft.png);
+  background-position: center;
+  background-size: cover;
+
+  border-radius: 50%;
+  background-color: rgb(239, 185, 185);
+  top: -42px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+#goalkeeper.happy-face::before {
+  background-image: url(happy-face-minecraft.png);
+}
+/* Goalkeeper arms */
+#goalkeeper::after {
+  content: "";
+  width: 9.00vw;
+  height: 1.39vh;
+
+  background-color: blue; 
+  position: absolute;
+  top: 10px; /* Aligns at shoulder level */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+/* Legs need size & positioning */
+.leg {
+  position: absolute;
+  width: 0.9vw;
+  height: 3.7vh;
+
+  background-color:white;
+  bottom: -33px; /* Ensure they are at the bottom of #goalkeeper */
+}
+
+/* Left leg */
+.left-leg {
+  left: 0px; /* Position it towards the left */
+}
+
+/* Right leg */
+.right-leg {
+  right: 0px; /* Position it towards the right */
+}
+
+.shoe {
+  position: absolute;
+  width: 1.30vw;
+  height: 0.93vh;
+  background-color: black; 
+  border-radius: 5px;
+  bottom: -10px; /* Places shoe below legs */
+}
+
+/* Position left shoe */
+.left-shoe {
+  left: -5px;
+}
+
+/* Position right shoe */
+.right-shoe {
+  right: -5px;
+}
+
+
+#soccer-ball {
+  width: 3.5vw;
+  height: 3.5vw;
+  
+  background-image: url(soccer-ball.png);
+  background-position: center;
+  background-size: cover;
+  background-color: #fff;
+
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+
+
+
+}
+
+button {
+  font-family: "Arial", sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  background-color: #ffffff;
+  color: #222; 
+  border: 2px solid #000; 
+  border-radius: 50px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+}
+
+button:hover {
+  background-color: #FFD700; 
+  color: black;
+}
+#buttons-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end;
+  gap: 10px; 
+}
+
+/* Animation */
+.bottom-shoot-buttons, .shoot-buttons {
+  display: flex;
+ justify-content: space-between;
+}
+
+
+.right-shoot {
+  animation: right-shoot 1s ease-out forwards;
+}
+
+.center-shoot {
+  animation: center-shoot 1s ease-out forwards;
+}
+
+.bottom-center-shoot{
+  animation: bottom-center-shoot 1s ease-out forwards;
+}
+
+.left-shoot {
+  animation: left-shoot 1s ease-out forwards;
+}
+
+.bottom-left-shoot {
+  animation: bottom-left-shoot 1s ease-out forwards;
+}
+
+.bottom-right-shoot{
+  animation: bottom-right-shoot 1s ease-out forwards;
+}
+
+.goalkeeper-jump-left{
+  animation: goalkeeper-jump-left 2s forwards;
+
+}
+
+.goalkeeper-jump-left::after {
+  animation: goalkeeper-arms-left 2s forwards;
+}
+.goalkeeper-jump-right{
+
+  animation: goalkeeper-jump-right 2s forwards;
+
+}
+
+.goalkeeper-jump-right::after {
+  animation: goalkeeper-arms-right 2s forwards;
+}
+
+
+.goalkeeper-jump-center{
+  animation: goalkeeper-jump-center 2s forwards;
+
+}
+/* change face mood */
+#goalkeeper::before {
+  transition: background-image 0.3s ease-in-out;
+}
+
+.goalkeeper-jump-bottom-left{
+  animation: goalkeeper-jump-bottom-left 1s forwards;
+}
+.goalkeeper-jump-bottom-right{
+  animation: goalkeeper-jump-bottom-right 1s forwards;
+}
+
+.goalkeeper-jump-bottom-center{
+  animation: goalkeeper-jump-bottom-center 1s forwards;
+}
+
+
+
+
+@keyframes right-shoot {
+  0% {
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+  }
+
+
+
+  100% {
+    bottom: 70%;
+    left: 65%;
+  }
+}
+@keyframes center-shoot {
+
+  0% {
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+
+  }
+
+
+
+  100% {
+    bottom: 72%;
+    left: 50%;
+
+
+
+  }
+
+
+}
+
+@keyframes bottom-center-shoot {
+
+  0% {
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+
+  }
+
+
+
+  100% {
+    bottom: 53%;
+    left: 50%;
+
+
+
+  }
+
+
+}
+
+@keyframes left-shoot {
+  0% {
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+  }
+
+
+
+  100% {
+    bottom: 70%;
+    left: 30%;
+  }
+}
+
+
+
+
+@keyframes bottom-left-shoot {
+
+  0%{
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+  }
+
+  100% {
+    bottom: 55%;
+    left:32%;
+  }
+  
+}
+
+@keyframes bottom-right-shoot {
+  0%{
+    bottom: 10px;
+    left: 50%;
+    transform: rotate(360deg);
+  }
+
+  100%{
+    bottom: 50%;
+    left: 63%;
+  }
+  
+}
+
+@keyframes goalkeeper-jump-center {
+  0% { 
+    top: 20vh; 
+  } /* Start position */
+
+  50% { 
+    top: 7vh; 
+  } /* Move upward */
+
+  100% { 
+    top: 7vh; 
+  } 
+}
+
+@keyframes goalkeeper-jump-bottom-center {
+  0% { 
+    top: 20vh; 
+    left: 19vw; 
+    transform: rotate(0deg); 
+  } /* No tilt */
+
+  100% { 
+    top: 20vh; 
+    left: 19vw;
+  } /* Arms tilt more */
+
+}
+
+@keyframes goalkeeper-jump-left {
+  0% { 
+    top: 20vh; 
+    left: 19vw; 
+    transform: rotate(0deg); 
+  } /* No tilt */
+
+  50% { 
+    top: 6vh; 
+    left: 3vw; 
+    transform: rotate(-20deg); 
+  } /* Arms tilt more */
+
+  100% { 
+    top: 6vh; 
+    left: 3vw; 
+    transform: rotate(-20deg); 
+  } 
+}
+
+/* Arms need their own animation */
+@keyframes goalkeeper-arms-left {
+  0% { 
+    transform: translateX(-50%) rotate(0deg); 
+  } /* Normal arms */
+
+  50% { 
+    transform: translateX(-50%) rotate(30deg); 
+  } /* Arms tilt more */
+
+  100% { 
+    transform: translateX(-50%) rotate(30deg); 
+  } /* Stay tilted */
+}
+
+
+
+@keyframes goalkeeper-jump-right {
+  0% { 
+    top: 20vh; 
+    left: 19vw; 
+    transform: rotate(0deg); 
+  } /* No tilt */
+
+  50% { 
+    top: 6vh; 
+    left: 34vw; 
+    transform: rotate(20deg); 
+  } 
+
+  100% { 
+    top: 6vh; 
+    left: 34vw; 
+    transform: rotate(20deg); 
+  } /* Stay in final position */
+}
+
+@keyframes goalkeeper-arms-right {
+  0% { 
+    transform: translateX(-50%) rotate(0deg); 
+  } /* Normal position */
+
+  50% { 
+    transform: translateX(-50%) rotate(-30deg); 
+  } /* Arms tilt upwards */
+
+  100% { 
+    transform: translateX(-50%) rotate(-30deg); 
+  } /* Stay tilted */
+}
+
+@keyframes goalkeeper-jump-bottom-left {
+
+  0% { 
+    top: 20vh; 
+    left: 19vw; 
+    transform: rotate(0deg); 
+  } /* No tilt */
+
+
+  100% { 
+    top: 23vh; 
+    left: 2.5vw; 
+    transform: rotate(-40deg); 
+  } 
+  
+}
+
+@keyframes goalkeeper-jump-bottom-right {
+
+  0% { 
+    top: 20vh; 
+    left: 19vw; 
+    transform: rotate(0deg); 
+  } /* No tilt */
+
+
+  100% { 
+    top: 23vh; 
+    left: 34vw; 
+    transform: rotate(40deg); 
+  } 
+  
+}
+
+
+
+
+ 
